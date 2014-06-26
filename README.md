@@ -3,6 +3,8 @@ adminsystems
 
 Adminsystems CMS, based on PHP
 
+WORK IN PROGRESS
+
 
 Adminsystems will be released in a all-new version 5 this year.
 
