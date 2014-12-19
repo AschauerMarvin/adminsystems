@@ -351,7 +351,7 @@ function display_navigation($params){
 		}
 		if($entry['entry_alias'] == $page){
 			$get_class = $selected;
-			if($selected_id != '') $get_id = $selected_id;
+			if (!empty($selected_id)) $get_id = $selected_id;
 		}else{
 			$get_class = '';
 			$get_id = '';
@@ -390,7 +390,7 @@ function display_navigation($params){
 	foreach($navigation_menu as $key=>$entry){
 		if($entry['entry_alias'] == $page){
 			$get_class = $selected;
-			if($selected_id != '') $get_id = $selected_id;
+			if (!empty($selected_id)) $get_id = $selected_id;
 		}else{
 			$get_class = '';
 			$get_id = '';
@@ -399,7 +399,7 @@ function display_navigation($params){
 			foreach($dropdowns[$key] as $dr=>$dropdown){
 				if($dropdown['entry_alias'] == $page){
 					$get_class = $selected;
-					if($selected_id != '') $get_id = $selected_id;
+					if (!empty($selected_id)) $get_id = $selected_id;
 				}else{
 					$get_class = '';
 					$get_id = '';
@@ -425,7 +425,7 @@ function display_navigation($params){
 			}
 			if($entry['entry_alias'] == $page){
 				$get_class = $selected;
-				if($selected_id != '') $get_id = $selected_id;
+				if (!empty($selected_id)) $get_id = $selected_id;
 			}else{
 				$get_class = '';
 				$get_id = '';
@@ -447,7 +447,7 @@ function display_navigation($params){
 		}else{
 			if($entry['entry_alias'] == $page){
 				$get_class = $selected;
-				if($selected_id != '') $get_id = $selected_id;
+				if (!empty($selected_id)) $get_id = $selected_id;
 			}else{
 				$get_class = '';
 				$get_id = '';
