@@ -1,4 +1,7 @@
 <?php
+if(!isset(LOAD)){
+	if(LOAD != true) exit('No LOAD set');
+}
 /**
  * upload.php
  *
