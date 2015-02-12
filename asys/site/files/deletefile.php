@@ -1,4 +1,7 @@
 <?php
+if(!isset(LOAD)){
+	if(LOAD != true) exit('No LOAD set');
+}
 // save the current path in cur_path
 $cur_path = asys_get('path');
 $uploads_dir = '../../upload/files' . $cur_path;
