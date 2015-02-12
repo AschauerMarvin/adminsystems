@@ -7,6 +7,10 @@
 * Last change: Version 3.7.0
 */
 
+if(!isset(LOAD)){
+	if(LOAD != true) exit('No LOAD set');
+}
+
 // save the current path in cur_path
 $cur_path = asys_get('path');
 if(!$cur_path) $cur_path = '/';
