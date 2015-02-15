@@ -1,6 +1,6 @@
 <?php
-if(null !== LOAD){
-	if(LOAD != true) exit('No LOAD set');
+if(empty($loadFileman)){
+	die('No LOAD set');
 }
 /**
  * upload.php

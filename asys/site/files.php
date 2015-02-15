@@ -14,7 +14,7 @@ if(!$asys['var_action']){
 }
 
 
-define("LOAD", true);
+$loadFileman = true; 
 
 // manage files
 if($varaction == 'manage'){
