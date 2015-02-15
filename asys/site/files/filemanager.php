@@ -7,7 +7,7 @@
 * Last change: Version 3.7.0
 */
 
-if(!isset(LOAD)){
+if(null !== LOAD){
 	if(LOAD != true) exit('No LOAD set');
 }
 

@@ -1,5 +1,5 @@
 <?php
-if(!isset(LOAD)){
+if(null !== LOAD){
 	if(LOAD != true) exit('No LOAD set');
 }
 // save the current path in cur_path

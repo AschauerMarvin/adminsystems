@@ -2,7 +2,7 @@
 // Landsknecht Adminsystems
 // this file includes all version-numbers of core contents of adminsystems
 
-$asys['asys_version'] = '4.0.1';
+$asys['asys_version'] = '4.0.2';
 $asys['asys_major_version'] = '4.0';
 $asys['asys_core_version'] = 'DEV_B4_3.0.0_14.03.2013';
 

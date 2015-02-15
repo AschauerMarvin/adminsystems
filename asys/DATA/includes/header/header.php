@@ -30,13 +30,6 @@ if ($security == '1'){
 $db->db_q("SET NAMES 'utf8'");
 $db->db_q("SET CHARACTER SET 'utf8'");
 
-// generate global variables
-$asys['var_action'] = isset($_GET['action'])?$_GET['action']:false; // adminsystems ?action variable
-$varaction = $asys['var_action'];
-$asys['var_mode'] = isset($_GET['mode'])?$_GET['mode']:false; // adminsystems ?mode variable
-$varmode = $asys['var_mode']; // 3.5 varmode
-$asys['var_id'] = isset($_GET['id'])?$db->escape($_GET['id']):false;
-
 if(isset($_SESSION['user_id'])){
 	$asys_user['asys_u_userid'] = $_SESSION['user_id']; // user ID
 	$asys_user['asys_u_user'] = $_SESSION['user']; // username
@@ -81,6 +74,13 @@ $tpl->assignInclude('choose_menu',"../tpl/$used_tpl/choose.tpl");
 $tpl->prepare();
 
 $sitetitle = $asys_conf['asys_sitetitle'];
+
+// generate global variables
+$asys['var_action'] = isset($_GET['action'])?mod_str_for_post($_GET['action']):false; // adminsystems ?action variable
+$varaction = $asys['var_action'];
+$asys['var_mode'] = isset($_GET['mode'])?mod_str_for_post($_GET['mode']):false; // adminsystems ?mode variable
+$varmode = $asys['var_mode']; // 3.5 varmode
+$asys['var_id'] = isset($_GET['id'])?$db->escape(mod_str_for_post($_GET['id'])):false;
 
 
 require_once $dir['lang_dir'] . 'en.php';

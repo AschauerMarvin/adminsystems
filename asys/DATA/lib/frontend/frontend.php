@@ -532,4 +532,9 @@ function display_languages($params = ''){
 	}
 
 }
+
+function remove_all($str){
+	return preg_replace('/[^a-z0-9_-]/isU', '', $str);
+}
+
 ?>

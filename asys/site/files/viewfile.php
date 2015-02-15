@@ -1,6 +1,6 @@
 <?php
 
-if(!isset(LOAD)){
+if(null !== LOAD){
 	if(LOAD != true) exit('No LOAD set');
 }
 

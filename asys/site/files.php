@@ -1,6 +1,7 @@
 <?php
 include 'headerconfig.php';
 
+if(!ckpm('access_upload')) acdn();
 
 // choose overview
 if(!$asys['var_action']){

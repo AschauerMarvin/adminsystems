@@ -46,14 +46,14 @@ require_once asys_dir . '/' . asys_DATA_path . '/lib/frontend/frontend.php';
 
 // get page
 if(isset($_GET['page'])){
-	$asys['page'] = $db->escape($_GET['page']);
+	$asys['page'] = $db->escape(remove_all($_GET['page']));
 }else{
 	$asys['page'] = $asys_conf['page_home'];
 }
 
 // get content
 if(isset($_GET['content'])){
-	$asys['content'] = $db->escape($_GET['content']);
+	$asys['content'] = $db->escape(remove_all($_GET['content']));
 }else{
 	$asys['content'] = false;
 }
@@ -76,7 +76,7 @@ if(isset($asys['page'])){
 
 // get language
 if(isset($_GET['lang'])){
-	$asys['lang'] = $db->escape($_GET['lang']);
+	$asys['lang'] = $db->escape(remove_all($_GET['lang']));
 }else{
 	if(isset($_SERVER["HTTP_ACCEPT_LANGUAGE"]) && $_SERVER["HTTP_ACCEPT_LANGUAGE"] != "")
 	{

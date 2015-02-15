@@ -1,5 +1,5 @@
 <?php
-if(!isset(LOAD)){
+if(null !== LOAD){
 	if(LOAD != true) exit('No LOAD set');
 }
 /**
@@ -40,9 +40,13 @@ $fileName = isset($_REQUEST["name"]) ? $_REQUEST["name"] : '';
 // Clean the fileName for security reasons
 $fileName = preg_replace('/[^\w\._]+/', '_', $fileName);
 
+$ext = substr($fileName, strrpos($fileName, '.')+1);
+if($ext == 'php') 	die('{"jsonrpc" : "2.0", "error" : {"code": 100, "message": "PHP files not allowed."}, "id" : "id"}');
+
 // Make sure the fileName is unique but only if chunking is disabled
 if ($chunks < 2 && file_exists($targetDir . DIRECTORY_SEPARATOR . $fileName)) {
 	$ext = strrpos($fileName, '.');
+
 	$fileName_a = substr($fileName, 0, $ext);
 	$fileName_b = substr($fileName, $ext);
 
