@@ -5,6 +5,7 @@ Adminsystems CMS, based on PHP
 
 WORK IN PROGRESS - Still working on 5.0 / 4.1
 
+***I don't recommend using this software except for testing environments.***
 
 Adminsystems will be released in a all-new version 5 this year.
 
