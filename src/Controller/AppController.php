@@ -45,6 +45,17 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         $this->loadComponent('Csrf');
         $this->loadComponent('Security');
+
+        $this->loadComponent('Auth', [
+            'loginRedirect' => [
+                'controller' => 'Static',
+                'action' => 'about',
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Users',
+                'action' => 'login',
+            ],
+        ]);
     }
 
     /**
@@ -60,5 +71,10 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        $this->Auth->allow(['index', 'view', 'display']);
     }
 }

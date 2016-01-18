@@ -36,10 +36,12 @@ if (!$this->fetch('tb_body_end')) {
     <title>
         <?= $this->fetch('title') ?>
     </title>
-    <?= $this->Html->meta('icon') ?>
+    <!--[if IE]><link rel="shortcut icon" href="img/favicon.ico"><![endif]-->
+    <link rel="icon" href="img/favicon.png">
 
     <?= $this->Html->css('bootstrap.min') ?>
     <?= $this->Html->css('bootstrap-theme.min') ?>
+    <?= $this->Html->css('custom') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -52,5 +54,5 @@ if (!$this->fetch('tb_body_end')) {
     echo $this->fetch('script');
     echo $this->fetch('tb_body_end');
     ?>
-<?= $this->Html->script(['jquery.min', 'bootstrap.min']) ?>
+<?= $this->Html->script(['jquery.min', 'bootstrap.min', 'jquery.footable', 'jquery.footable-filter', 'u/tablefilter']) ?>
 </html>

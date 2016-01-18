@@ -25,7 +25,7 @@ use Cake\View\Exception\MissingTemplateException;
  *
  * @link http://book.cakephp.org/3.0/en/controllers/pages-controller.html
  */
-class PagesController extends AppController
+class StaticsController extends AppController
 {
 
     /**

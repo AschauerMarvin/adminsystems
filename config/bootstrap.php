@@ -1,19 +1,5 @@
 <?php
 /**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @since         0.10.8
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
-
-/**
  * Configure paths required to find CakePHP + general filepath
  * constants
  */
@@ -33,7 +19,7 @@ require ROOT . DS . 'vendor' . DS . 'autoload.php';
  */
 require CORE_PATH . 'config' . DS . 'bootstrap.php';
 
-// You can remove this if you are confident you have intl installed.
+// Check for installed intl extension
 if (!extension_loaded('intl')) {
     trigger_error('You must enable the intl extension to use CakePHP.', E_USER_ERROR);
 }
@@ -47,6 +33,8 @@ use Cake\Core\Plugin;
 use Cake\Database\Type;
 use Cake\Datasource\ConnectionManager;
 use Cake\Error\ErrorHandler;
+use Cake\Filesystem\File;
+use Cake\Filesystem\Folder;
 use Cake\Log\Log;
 use Cake\Mailer\Email;
 use Cake\Network\Request;
@@ -55,12 +43,7 @@ use Cake\Utility\Inflector;
 use Cake\Utility\Security;
 
 /**
- * Read configuration file and inject configuration into various
- * CakePHP classes.
- *
- * By default there is only one configuration file. It is often a good
- * idea to create multiple configuration files, and separate the configuration
- * that changes from configuration that does not. This makes deployment simpler.
+ * Load Configuration Files
  */
 try {
     Configure::config('default', new PhpConfig());
@@ -69,10 +52,18 @@ try {
     die($e->getMessage() . "\n");
 }
 
-// Load an environment local configuration file.
-// You can use a file like app_local.php to provide local overrides to your
-// shared configuration.
-//Configure::load('app_local', 'default');
+Configure::load('app/branding', 'default');
+Configure::load('app/permissions', 'default');
+Configure::load('app/version', 'default');
+
+$dir = new Folder(CONFIG . 'database');
+$dbs = $dir->find('.*\.php', true);
+
+foreach ($dbs as $db) {
+    $file = new File($db);
+    Configure::load('database/' . $file->name(), 'default');
+}
+//Configure::load('database/default', 'default');
 
 // When debug = false the metadata cache should last
 // for a very very long time, as we don't want

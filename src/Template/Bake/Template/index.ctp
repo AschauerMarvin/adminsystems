@@ -31,7 +31,8 @@ $fields = collection($fields)
         })
         ->take(7);
 %>
-<table class="table table-striped" cellpadding="0" cellspacing="0">
+<?= __('Search') ?> <input id="filter" type="text"/>
+<table id="tablefilter" class="table table-striped" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
 <% foreach ($fields as $field): %>
