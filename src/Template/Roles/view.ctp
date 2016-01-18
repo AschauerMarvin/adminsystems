@@ -48,6 +48,7 @@ $this->start('tb_actions');
                 <th><?= __('Mail') ?></th>
                 <th><?= __('Password') ?></th>
                 <th><?= __('Role Id') ?></th>
+                <th><?= __('Level') ?></th>
                 <th><?= __('Created') ?></th>
                 <th><?= __('Modified') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -63,6 +64,7 @@ $this->start('tb_actions');
                     <td><?= h($users->mail) ?></td>
                     <td><?= h($users->password) ?></td>
                     <td><?= h($users->role_id) ?></td>
+                    <td><?= h($users->level) ?></td>
                     <td><?= h($users->created) ?></td>
                     <td><?= h($users->modified) ?></td>
                     <td class="actions">

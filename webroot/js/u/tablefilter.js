@@ -17,4 +17,5 @@
       e.preventDefault();
       $('table.demo').trigger('footable_filter', {filter: $('#filter').val()});
     });
+    return true;
   });

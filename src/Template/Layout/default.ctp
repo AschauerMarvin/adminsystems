@@ -54,5 +54,5 @@ if (!$this->fetch('tb_body_end')) {
     echo $this->fetch('script');
     echo $this->fetch('tb_body_end');
     ?>
-<?= $this->Html->script(['jquery.min', 'bootstrap.min', 'jquery.footable', 'jquery.footable-filter', 'u/tablefilter']) ?>
+<?= $this->Html->script(['jquery.min', 'bootstrap.min', 'jquery.footable', 'jquery.footable-filter', 'u/tablefilter', 'u/tableclick']) ?>
 </html>

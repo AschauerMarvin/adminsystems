@@ -9,22 +9,29 @@ $this->start('tb_actions');
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
 <?= __('Search') ?> <input id="filter" type="text"/>
-<table id="tablefilter" class="table table-striped" cellpadding="0" cellspacing="0">
+<table id="tablefilter" class="table table-striped" cellpadding="0" cellspacing="0" data-filter="#filter" data-filter-text-only="true">
     <thead>
         <tr>
             <th><?= $this->Paginator->sort('id'); ?></th>
+
             <th><?= $this->Paginator->sort('username'); ?></th>
+
             <th><?= $this->Paginator->sort('firstname'); ?></th>
+
             <th><?= $this->Paginator->sort('lastname'); ?></th>
+
             <th><?= $this->Paginator->sort('mail'); ?></th>
+
             <th><?= $this->Paginator->sort('password'); ?></th>
+
             <th><?= $this->Paginator->sort('role_id'); ?></th>
+
             <th class="actions"><?= __('Actions'); ?></th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($users as $user): ?>
-        <tr>
+        <tr class="tableclick">
             <td><?= $this->Number->format($user->id) ?></td>
             <td><?= h($user->username) ?></td>
             <td><?= h($user->firstname) ?></td>
@@ -35,8 +42,8 @@ $this->start('tb_actions');
                 <?= $user->has('role') ? $this->Html->link($user->role->name, ['controller' => 'Roles', 'action' => 'view', $user->role->id]) : '' ?>
             </td>
             <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', $user->id], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                <?= $this->Html->link('', ['action' => 'edit', $user->id], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
+                <?= $this->Html->link('', ['action' => 'view', $user->id], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open doaction', 'id' => 'view/' . $user->id]) ?>
+                <?= $this->Html->link('', ['action' => 'edit', $user->id], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil doaction', 'id' => 'edit/' . $user->id]) ?>
                 <?= $this->Form->postLink('', ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'title' => __('Delete'), 'class' => 'btn btn-default glyphicon glyphicon-trash']) ?>
             </td>
         </tr>

@@ -1,3 +1,7 @@
 .form-signin {
     max-width: 380px!important;
 }
+
+table tbody tr:hover{
+    background-color: #a9b6be!important;
+}

@@ -53,6 +53,7 @@ Router::scope('/', function ($routes) {
      * ...and connect the rest of 'Pages' controller's URLs.
      */
     $routes->connect('/static/*', ['controller' => 'Statics', 'action' => 'display']);
+    $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
 
     /**
      * Connect catchall routes for all controllers.

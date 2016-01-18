@@ -46,6 +46,10 @@ $this->start('tb_actions');
             <td><?= $this->Number->format($user->id) ?></td>
         </tr>
         <tr>
+            <td><?= __('Level') ?></td>
+            <td><?= $this->Number->format($user->level) ?></td>
+        </tr>
+        <tr>
             <td><?= __('Created') ?></td>
             <td><?= h($user->created) ?></td>
         </tr>

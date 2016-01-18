@@ -20,7 +20,7 @@ $this->Form->templates([
 <?=$this->Form->create('Users', ['class' => 'form-signin'])?>
 <h2 class="form-signin-heading"><?= __('Please sign in') ?></h2>
 <?=$this->Form->input('username', ['class' => 'form-control', 'id' => 'inputUsername', 'placeholder' => __('Username'), 'autofocus', 'label' => false])?>
-<?=$this->Form->input('password', ['class' => 'form-control', 'id' => 'inputPassword', 'placeholder' => __('Password'), 'label' => false])?>
+<?=$this->Form->input('password', ['class' => 'form-control', 'id' => 'inputPassword', 'placeholder' => __('Password'), 'label' => false, 'value' => ''])?>
 <?=$this->Form->button(__('Sign in'), ['class' => 'btn btn-lg btn-primary btn-block']);?>
 <?=$this->Form->end()?>
 

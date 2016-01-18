@@ -55,12 +55,29 @@ if(true):
 <ul class="dropdown-menu">
 <?php
 if (true) {
-    echo '<li>' . $this->Html->link('User Settings', ['controller' => 'User', 'action' => 'settings', '_full' => true]) . '</li>';
     echo '<li>' . $this->Html->link('Settings', ['controller' => 'Settings', 'action' => 'index', '_full' => true]) . '</li>';
     echo '<li>' . $this->Html->link('Users', ['controller' => 'Users', 'action' => 'index', '_full' => true]) . '</li>';
     echo '<li>' . $this->Html->link('Roles', ['controller' => 'Roles', 'action' => 'index', '_full' => true]) . '</li>';
     echo '<li>' . $this->Html->link('Domains', ['controller' => 'Domains', 'action' => 'index', '_full' => true]) . '</li>';
     echo '<li>' . $this->Html->link('Languages', ['controller' => 'Languages', 'action' => 'index', '_full' => true]) . '</li>';
+}
+?>
+</ul>
+</li>
+<?php 
+endif;
+?>
+
+<?php
+// user dropdown
+if(true):
+?>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= __('User') ?> <span class="caret"></span></a>
+<ul class="dropdown-menu">
+<?php
+if (true) {
+    echo '<li>' . $this->Html->link('User Settings', ['controller' => 'User', 'action' => 'settings', '_full' => true]) . '</li>';
     echo '<li>' . $this->Html->link('About', ['controller' => 'Static', 'action' => 'about', '_full' => true]) . '</li>';
 
 }

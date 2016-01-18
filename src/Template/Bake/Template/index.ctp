@@ -32,18 +32,19 @@ $fields = collection($fields)
         ->take(7);
 %>
 <?= __('Search') ?> <input id="filter" type="text"/>
-<table id="tablefilter" class="table table-striped" cellpadding="0" cellspacing="0">
+<table id="tablefilter" class="table table-striped" cellpadding="0" cellspacing="0" data-filter="#filter" data-filter-text-only="true">
     <thead>
         <tr>
 <% foreach ($fields as $field): %>
             <th><?= $this->Paginator->sort('<%= $field %>'); ?></th>
+
 <% endforeach; %>
             <th class="actions"><?= __('Actions'); ?></th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($<%= $pluralVar %> as $<%= $singularVar %>): ?>
-        <tr>
+        <tr class="tableclick">
 <%
             foreach ($fields as $field) {
                 $isKey = false;
@@ -76,8 +77,8 @@ $fields = collection($fields)
             $pk = '$' . $singularVar . '->' . $primaryKey[0];
             %>
             <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', <%= $pk %>], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                <?= $this->Html->link('', ['action' => 'edit', <%= $pk %>], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
+                <?= $this->Html->link('', ['action' => 'view', <%= $pk %>], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open doaction', 'id' => 'view/' . <%= $pk %>]) ?>
+                <?= $this->Html->link('', ['action' => 'edit', <%= $pk %>], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil doaction', 'id' => 'edit/' . <%= $pk %>]) ?>
                 <?= $this->Form->postLink('', ['action' => 'delete', <%= $pk %>], ['confirm' => __('Are you sure you want to delete # {0}?', <%= $pk %>), 'title' => __('Delete'), 'class' => 'btn btn-default glyphicon glyphicon-trash']) ?>
             </td>
         </tr>
