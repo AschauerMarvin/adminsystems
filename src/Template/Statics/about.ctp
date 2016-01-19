@@ -20,6 +20,7 @@ $this->assign('title', __('About'));
     <br />
     <?= __('Version') . ' ' . Configure::read('Version.long') ?>
     </p>
+    <p><?= Configure::read('Branding.slogan') ?></p>
     <?php if(!empty(Configure::read('Branding.version'))) echo  __('Product Version') . ': ' . Configure::read('Branding.version'); ?>
     <p>
     <br />
