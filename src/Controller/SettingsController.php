@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Core\Configure;
+use Cake\Event\Event;
 
 /**
  * Settings Controller
@@ -11,6 +12,18 @@ use Cake\Core\Configure;
  */
 class SettingsController extends AppController
 {
+
+    public function beforeRender(Event $event)
+    {
+        parent::beforeRender($event);
+
+        foreach (Configure::read('Settings.AvailableSettings') as $setting) {
+            foreach (Configure::read($setting) as $changeable => $value) {
+                $availableSettings[$setting . '.' . $changeable] = ['Type' => $this->DynamicConfig->getType($value), 'Value' => $value];
+            }
+        }
+        $this->set('availableSettings', $availableSettings);
+    }
 
     /**
      * Index method
@@ -22,10 +35,6 @@ class SettingsController extends AppController
         $this->set('settings', $this->paginate($this->Settings));
         $this->set('_serialize', ['settings']);
 
-        pr(Configure::read('Settings.availableSettings'));
-        foreach (Configure::read('Settings.availableSettings') as $setting) {
-            echo $setting;
-        }
         //echo Configure::read('Test');
 
     }

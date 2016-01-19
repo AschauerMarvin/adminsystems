@@ -52,11 +52,6 @@ try {
     die($e->getMessage() . "\n");
 }
 
-Configure::load('app/branding', 'default');
-Configure::load('app/permissions', 'default');
-Configure::load('app/version', 'default');
-Configure::load('app/settings', 'default');
-
 $dir = new Folder(CONFIG . 'database');
 $dbs = $dir->find('.*\.php', true);
 
@@ -173,6 +168,11 @@ Request::addDetector('tablet', function ($request) {
  */
 
 //Plugin::load('Migrations');
+
+Configure::load('app/branding', 'default');
+Configure::load('app/permissions', 'default');
+Configure::load('app/version', 'default');
+Configure::load('app/settings', 'default');
 
 // Only try to load DebugKit in development mode
 // Debug Kit should not be installed on a production system

@@ -9,10 +9,12 @@ $this->assign('title', __('About'));
 
 
 <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><?= Configure::read('Branding.longname') ?></h3>
+  <div data-toggle="collapse" data-target="#toggle1" class="panel-heading">
+    <h3 class="panel-title">
+          <?= Configure::read('Branding.longname') ?>  
+    </h3>
   </div>
-  <div class="panel-body">
+  <div id="toggle1" class="panel-body panel-collapse collapse in">
     <?= $this->Html->image(Configure::read('Branding.logo')) ?>
     <br /><br />
     <p>
@@ -39,10 +41,10 @@ if(Configure::read('Branding.usedSoftware')):
 ?>
 
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div data-toggle="collapse" data-target="#toggle2" class="panel-heading">
     <h3 class="panel-title"><?= __('Used Software') ?></h3>
   </div>
-  <div class="panel-body">
+  <div id="toggle2" class="panel-body panel-collapse collapse in">
     <strong>CakePHP</strong> <?= Configure::version(); ?> <br />
     <strong>jQuery</strong> <?= Configure::read('Version.jquery'); ?> <br />
     <strong>Bootstrap</strong> <?= Configure::read('Version.bootstrap'); ?> <br />

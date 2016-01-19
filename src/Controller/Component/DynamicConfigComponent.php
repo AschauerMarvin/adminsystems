@@ -16,7 +16,7 @@ class DynamicConfigComponent extends Component
     {
         if (strpos($setting, ',') !== false) {
             return 'Array';
-        } elseif ($setting == 1 || $setting == 0) {
+        } elseif ($setting === 1 || $setting === 0) {
             return 'Boolean';
         } else {
             return 'Text';
