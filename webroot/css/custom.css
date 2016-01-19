@@ -7,5 +7,20 @@ table tbody tr:hover{
 }
 
 .col-md-2 {
-    width: 10%;
+    width: 10%!important;
+}
+
+pre{
+    padding-left: 12%!important;
+}
+
+.main {
+    padding-right: 10px!important;
+    padding-left: 10px!important;
+}
+.col-md-offset-2 {
+    margin-left: 10%!important;
+}
+.col-md-10 {
+    width: 90%!important;
 }

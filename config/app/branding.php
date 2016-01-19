@@ -4,7 +4,11 @@ return [
         'name' => 'Adminsystems',
         'longname' => 'Adminsystems CMS',
         'logo' => 'logo.png',
-        'display' => 0,
+        'slogan' => 'The branding-free CMS for Developers',
+        'url' => 'http://aschauermarvin.github.io/adminsystems/',
+        'licence' => true,
+        'usedSoftware' => true,
+        'version' => '',
     ],
 ]
 
