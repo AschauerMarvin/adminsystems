@@ -55,6 +55,7 @@ try {
 Configure::load('app/branding', 'default');
 Configure::load('app/permissions', 'default');
 Configure::load('app/version', 'default');
+Configure::load('app/settings', 'default');
 
 $dir = new Folder(CONFIG . 'database');
 $dbs = $dir->find('.*\.php', true);

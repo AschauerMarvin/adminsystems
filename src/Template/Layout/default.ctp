@@ -43,6 +43,10 @@ if (!$this->fetch('tb_body_end')) {
     <?= $this->Html->css('bootstrap-theme.min') ?>
     <?= $this->Html->css('custom') ?>
 
+    <?php 
+    $this->prepend('script', $this->Html->script(['jquery.min', 'bootstrap.min', 'jquery.footable', 'jquery.footable-filter', 'u/tablefilter', 'u/tableclick']));
+    ?>
+
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
 </head>
@@ -54,5 +58,4 @@ if (!$this->fetch('tb_body_end')) {
     echo $this->fetch('script');
     echo $this->fetch('tb_body_end');
     ?>
-<?= $this->Html->script(['jquery.min', 'bootstrap.min', 'jquery.footable', 'jquery.footable-filter', 'u/tablefilter', 'u/tableclick']) ?>
 </html>

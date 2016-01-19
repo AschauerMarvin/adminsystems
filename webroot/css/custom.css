@@ -5,3 +5,7 @@
 table tbody tr:hover{
     background-color: #a9b6be!important;
 }
+
+.col-md-2 {
+    width: 10%;
+}

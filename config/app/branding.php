@@ -4,6 +4,7 @@ return [
         'name' => 'Adminsystems',
         'longname' => 'Adminsystems CMS',
         'logo' => 'logo.png',
+        'display' => 0,
     ],
 ]
 

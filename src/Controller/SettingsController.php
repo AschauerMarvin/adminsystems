@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
 
 /**
  * Settings Controller
@@ -18,27 +19,15 @@ class SettingsController extends AppController
      */
     public function index()
     {
-
-        //ConnectionManager::alias($alias, 'default');
-
         $this->set('settings', $this->paginate($this->Settings));
         $this->set('_serialize', ['settings']);
-    }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Setting id.
-     * @return void
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $setting = $this->Settings->get($id, [
-            'contain' => [],
-        ]);
-        $this->set('setting', $setting);
-        $this->set('_serialize', ['setting']);
+        pr(Configure::read('Settings.availableSettings'));
+        foreach (Configure::read('Settings.availableSettings') as $setting) {
+            echo $setting;
+        }
+        //echo Configure::read('Test');
+
     }
 
     /**

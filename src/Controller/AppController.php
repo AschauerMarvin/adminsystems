@@ -37,6 +37,8 @@ class AppController extends Controller
      *
      * @return void
      */
+    //ConnectionManager::alias($alias, 'default');
+
     public function initialize()
     {
         parent::initialize();
@@ -45,7 +47,10 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         $this->loadComponent('Csrf');
         $this->loadComponent('Security');
+        // this is for handling dynamic db settings
+        $this->loadComponent('DynamicConfig');
 
+        // Authentication
         $this->loadComponent('Auth', [
             'loginRedirect' => [
                 'controller' => 'Static',
@@ -55,6 +60,7 @@ class AppController extends Controller
                 'controller' => 'Login',
             ],
         ]);
+
     }
 
     /**
