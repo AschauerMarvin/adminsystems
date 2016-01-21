@@ -10,6 +10,7 @@ use Cake\Core\Configure;
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+
           <a class="navbar-brand" href="#"><?=Configure::read('Branding.name')?></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -73,12 +74,13 @@ endif;
 if(true):
 ?>
 <li class="dropdown">
-<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= __('User') ?> <span class="caret"></span></a>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= __('System') ?> <span class="caret"></span></a>
 <ul class="dropdown-menu">
 <?php
 if (true) {
     echo '<li>' . $this->Html->link('User Settings', ['controller' => 'User', 'action' => 'settings', '_full' => true]) . '</li>';
     echo '<li>' . $this->Html->link('About', ['controller' => 'Static', 'action' => 'about', '_full' => true]) . '</li>';
+    echo '<li>' . $this->Html->link('Logout', ['controller' => 'Users', 'action' => 'logout', '_full' => true]) . '</li>';
 
 }
 ?>
@@ -87,13 +89,15 @@ if (true) {
 <?php 
 endif;
 ?>
-<?php 
-    echo '<li>' . $this->Html->link('Logout', ['controller' => 'Users', 'action' => 'logout', '_full' => true]) . '</li>';
-
-?>
-
 
           </ul>
+<ul class="nav navbar-nav navbar-right visible-xs">
+                    <?= $this->fetch('tb_actions') ?>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="Search...">
+                </form>
+                
         </div>
       </div>
     </nav>

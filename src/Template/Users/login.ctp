@@ -7,7 +7,6 @@ $this->extend('../Layout/TwitterBootstrap/signin');
 
 <div class="container">
 
-<?=$this->Flash->render('auth')?>
 <div class="form-signin">
 <?= $this->Html->image(Configure::read('Branding.logo')); ?>
 </div>

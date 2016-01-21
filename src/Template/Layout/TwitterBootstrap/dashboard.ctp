@@ -9,17 +9,44 @@ $this->start('tb_body_start');
 
 <?= $this->element('navigation') ?>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
-                <?= $this->fetch('tb_sidebar') ?>
-            </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+<div id="wrapper">
+    <div id="sidebar-wrapper" class="sidebar">
+<ul class="nav nav-pills nav-stacked">
+        <?= $this->fetch('tb_sidebar') ?>
+</ul>
+
+    </div>
+    <div id="page-content-wrapper">
+        <div class="page-content">
+                    <div class="col-md-12">
+                    <?php 
+                    if (!$this->fetch('tb_flash')) {
+                        $this->start('tb_flash');
+                        if (isset($this->Flash))
+                            echo $this->Flash->render();
+                            $this->end();
+                        }
+                        $this->end();
+                    ?>
+                        
+                    <?= $this->fetch('content'); ?>
+                    </div>
+        </div>
+    </div>
+</div>
+
+
 <?php
+
+$this->start('tb_body_end');
+echo '</body>';
+$this->end();
+
 /**
  * Default `flash` block.
  */
-if (!$this->fetch('tb_flash')) {
+/*if (!$this->fetch('tb_flash')) {
     $this->start('tb_flash');
     if (isset($this->Flash))
         echo $this->Flash->render();
@@ -33,3 +60,4 @@ $this->end();
 
 $this->append('content', '</div></div></div>');
 echo $this->fetch('content');
+*/

@@ -31,7 +31,7 @@ $fields = collection($fields)
         })
         ->take(7);
 %>
-<?= __('Search') ?> <input id="filter" type="text"/>
+<input id="filter" type="text" placeholder="<?= __('Search') ?>" />
 <table id="tablefilter" class="table table-striped" cellpadding="0" cellspacing="0" data-filter="#filter" data-filter-text-only="true">
     <thead>
         <tr>

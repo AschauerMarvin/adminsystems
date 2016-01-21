@@ -5,7 +5,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 $this->assign('title', __('About'));
 ?>
 
-<h2><?= __('About') ?></h2>
+<h1><?= __('About') ?></h1>
 
 
 <div class="panel panel-default">

@@ -61,6 +61,9 @@ class AppController extends Controller
             ],
         ]);
 
+        // load cached dynamic db settings
+        $this->DynamicConfig->loadSettings();
+
     }
 
     /**
@@ -80,5 +83,6 @@ class AppController extends Controller
 
     public function beforeFilter(Event $event)
     {
+
     }
 }

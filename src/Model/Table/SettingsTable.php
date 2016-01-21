@@ -2,8 +2,6 @@
 namespace App\Model\Table;
 
 use App\Model\Entity\Setting;
-use Cake\ORM\Query;
-use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
@@ -45,10 +43,6 @@ class SettingsTable extends Table
         $validator
             ->requirePresence('name', 'create')
             ->notEmpty('name');
-
-        $validator
-            ->requirePresence('value', 'create')
-            ->notEmpty('value');
 
         return $validator;
     }

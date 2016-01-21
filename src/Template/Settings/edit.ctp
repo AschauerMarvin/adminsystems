@@ -12,13 +12,25 @@ $this->start('tb_actions');
     </li>
     <li><?= $this->Html->link(__('List Settings'), ['action' => 'index']) ?></li>
 <?php $this->end(); ?>
-<?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
+<?php $this->assign('tb_sidebar', $this->fetch('tb_actions')); ?>
 <?= $this->Form->create($setting); ?>
 <fieldset>
     <legend><?= __('Edit {0}', ['Setting']) ?></legend>
     <?php
-    echo $this->Form->input('name');
-    echo $this->Form->input('value');
+    $type = $setting->type;
+
+    if($type == 'Boolean'){
+        $form = 'checkbox';
+        $label = __('Enabled');
+    }else{
+        $form = 'text';
+        $label = __('Setting');
+    }
+
+    echo $this->Form->input('name', ['type' => 'hidden']);
+    echo $this->Form->input('name', ['disabled']);
+    echo $this->Form->input('value', ['type' => $form, 'label' => $label]);
+    echo $this->Form->input('type', ['type' => 'hidden']);
     ?>
 </fieldset>
 <?= $this->Form->button(__("Save")); ?>
