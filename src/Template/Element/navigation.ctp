@@ -14,6 +14,9 @@ use Cake\Core\Configure;
           <a class="navbar-brand" href="#"><?=Configure::read('Branding.name')?></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+<ul class="nav navbar-nav navbar-right visible-xs">
+                    <?= $this->fetch('tb_actions') ?>
+</ul>
           <ul class="nav navbar-nav">
 <li>
 <?php
@@ -91,13 +94,21 @@ endif;
 ?>
 
           </ul>
-<ul class="nav navbar-nav navbar-right visible-xs">
-                    <?= $this->fetch('tb_actions') ?>
-                </ul>
-                <form class="navbar-form navbar-right">
-                    <input type="text" class="form-control" placeholder="Search...">
-                </form>
-                
+          <ul class="nav navbar-nav navbar-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= __('Systeme') ?> <span class="caret"></span></a>
+<ul class="dropdown-menu">
+<?php
+if (true) {
+    echo '<li>' . $this->Html->link('System 1', ['controller' => 'Domains', 'action' => 'switch/system1', '_full' => true]) . '</li>';
+    echo '<li>' . $this->Html->link('System 2', ['controller' => 'Domains', 'action' => 'switch/system1', '_full' => true]) . '</li>';
+    echo '<li>' . $this->Html->link('System 3', ['controller' => 'Domains', 'action' => 'switch/system1', '_full' => true]) . '</li>';
+}
+?>
+</ul>
+</li>
+
+          </ul>
         </div>
       </div>
     </nav>

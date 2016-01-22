@@ -1,11 +1,12 @@
 {
-    "name": "cakephp/app",
-    "description": "CakePHP skeleton app",
-    "homepage": "http://cakephp.org",
+    "name": "adminsystems/app",
+    "description": "The branding-free CMS for Develpoers",
+    "homepage": "http://adminsystems.webtory.at/",
     "type": "project",
     "license": "MIT",
     "require": {
-        "php": ">=5.4.16",
+        "php": ">=5.5.0",
+        "ext-intl" : "*",
         "cakephp/cakephp": "~3.1",
         "mobiledetect/mobiledetectlib": "2.*",
         "cakephp/migrations": "~1.0",

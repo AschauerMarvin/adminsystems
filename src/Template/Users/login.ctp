@@ -2,6 +2,8 @@
 use Cake\Core\Configure;
 
 $this->extend('../Layout/TwitterBootstrap/signin');
+
+$this->assign('title', __('Login'));
 ?>
 
 

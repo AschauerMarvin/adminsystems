@@ -17,7 +17,7 @@ $this->start('tb_actions');
     echo $this->Form->input('mail');
     echo $this->Form->input('password');
     echo $this->Form->input('role_id', ['options' => $roles]);
-    echo $this->Form->input('level');
+    echo $this->Form->input('level', ['data-toggle' => 'popover', 'data-trigger' => 'focus', 'title' => 'Dismissible popover', 'data-content' => 'And here\'s some amazing content. It\'s very engaging. Right?']);
     ?>
 </fieldset>
 <?= $this->Form->button(__("Add")); ?>
