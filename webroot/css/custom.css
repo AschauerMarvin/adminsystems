@@ -41,6 +41,21 @@ table tbody tr:hover{
     background-color: #a9b6be!important;
 }
 
+.sidebar{
+    font-size: 150%;
+}
+
+.red, .red:hover{
+    color: red;
+}
+
+.green, .green:hover{
+    color: green;
+}
+
+.gray, .gray:hover{
+    color: gray;
+}
 
 pre{
     padding-left: 12%!important;

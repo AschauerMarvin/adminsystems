@@ -30,6 +30,8 @@ $fields = collection($fields)
             return !in_array($schema->columnType($field), ['binary', 'text']);
         })
         ->take(7);
+
+echo '<h1>' . $pluralHumanName . '</h1>';
 %>
 <input id="filter" type="text" placeholder="<?= __('Search') ?>" />
 <table id="tablefilter" class="table table-striped" cellpadding="0" cellspacing="0" data-filter="#filter" data-filter-text-only="true">

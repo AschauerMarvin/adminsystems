@@ -3,14 +3,14 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 $this->start('tb_actions');
 ?>
     <li><?=
-    $this->Form->postLink(
+    $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ' .
         __('Delete'),
         ['action' => 'delete', $setting->id],
-        ['confirm' => __('Are you sure you want to delete # {0}?', $setting->id)]
+        ['confirm' => __('Are you sure you want to delete # {0}?', $setting->id), 'escape' => false, 'class' => 'red']
     )
     ?>
     </li>
-    <li><?= $this->Html->link(__('List Settings'), ['action' => 'index']) ?></li>
+    <li><?= $this->Html->link('<span class="glyphicon glyphicon-list"></span> ' . __('List Settings'), ['action' => 'index'], ['class' => '', 'escape' => false]) ?></li>
 <?php $this->end(); ?>
 <?php $this->assign('tb_sidebar', $this->fetch('tb_actions')); ?>
 <?= $this->Form->create($setting); ?>

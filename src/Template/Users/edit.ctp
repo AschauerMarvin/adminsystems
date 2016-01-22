@@ -23,7 +23,7 @@ $this->start('tb_actions');
     echo $this->Form->input('firstname');
     echo $this->Form->input('lastname');
     echo $this->Form->input('mail');
-    echo $this->Form->input('password', ['value' => '']);
+    echo $this->Form->input('password');
     echo $this->Form->input('role_id', ['options' => $roles]);
     echo $this->Form->input('level');
     ?>
