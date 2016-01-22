@@ -45,16 +45,24 @@ table tbody tr:hover{
     font-size: 150%;
 }
 
+.sidebar a{
+  color: #000;
+}
+
 .red, .red:hover{
-    color: red;
+    color: red!important;
 }
 
 .green, .green:hover{
-    color: green;
+    color: green!important;
 }
 
 .gray, .gray:hover{
-    color: gray;
+    color: gray!important;
+}
+
+.alert{
+    margin-top: 10px;
 }
 
 pre{

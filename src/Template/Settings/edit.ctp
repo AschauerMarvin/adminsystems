@@ -10,7 +10,7 @@ $this->start('tb_actions');
     )
     ?>
     </li>
-    <li><?= $this->Html->link('<span class="glyphicon glyphicon-list"></span> ' . __('List Settings'), ['action' => 'index'], ['class' => '', 'escape' => false]) ?></li>
+    <li><?= $this->Html->link('<span class="glyphicon glyphicon-list"></span> ' . __('Overview'), ['action' => 'index'], ['class' => '', 'escape' => false]) ?></li>
 <?php $this->end(); ?>
 <?php $this->assign('tb_sidebar', $this->fetch('tb_actions')); ?>
 <?= $this->Form->create($setting); ?>

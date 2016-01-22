@@ -12,7 +12,13 @@ use Cake\Event\Event;
  */
 class SettingsController extends AppController
 {
+    // all available settings, set in config/app/settings.php
     public $availableSettings;
+
+    public function isAuthorized($user)
+    {
+        return parent::isAuthorized($user);
+    }
 
     public function beforeFilter(Event $event)
     {
@@ -20,6 +26,7 @@ class SettingsController extends AppController
 
         $this->availableSettings = $this->DynamicConfig->getAvailableSettings();
         $this->set('availableSettings', $this->availableSettings);
+
     }
 
     /**

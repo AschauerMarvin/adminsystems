@@ -15,6 +15,8 @@ use Cake\ORM\Entity;
  * @property string $password
  * @property int $role_id
  * @property \App\Model\Entity\Role $role
+ * @property bool $admin
+ * @property int $level
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  */
@@ -39,5 +41,4 @@ class User extends Entity
     {
         return (new DefaultPasswordHasher)->hash($password);
     }
-
 }

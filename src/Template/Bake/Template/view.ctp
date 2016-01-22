@@ -61,13 +61,14 @@ foreach ($associations as $type => $data) {
 }
 %>
 <?php $this->end(); ?>
-<?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
+<?php $this->assign('tb_sidebar', $this->fetch('tb_actions')); ?>
 
+<?= '<h1>' . __('View <%= $singularHumanName %>') . '</h1>' ?>
 <div class="panel panel-default">
-    <!-- Panel header -->
-    <div class="panel-heading">
+    <div data-toggle="collapse" data-target="#toggle1" class="panel-heading">
         <h3 class="panel-title"><?= h($<%= $singularVar %>-><%= $displayField %>) ?></h3>
     </div>
+  <div id="toggle1" class="panel-collapse collapse in">
     <table class="table table-striped" cellpadding="0" cellspacing="0">
 <% if ($groupedFields['string']) : %>
 <% foreach ($groupedFields['string'] as $field) : %>
@@ -118,20 +119,24 @@ $details = $associationFields[$field];
 <% endforeach; %>
 <% endif; %>
     </table>
+    </div>
 </div>
 
 <%
 $relations = $associations['HasMany'] + $associations['BelongsToMany'];
+$i = 2;
 foreach ($relations as $alias => $details):
 $otherSingularVar = Inflector::variable($alias);
 $otherPluralHumanName = Inflector::humanize($details['controller']);
 %>
 <div class="panel panel-default">
     <!-- Panel header -->
-    <div class="panel-heading">
+    <div data-toggle="collapse" data-target="#toggle<%= $i %>" class="panel-heading">
         <h3 class="panel-title"><?= __('Related <%= $otherPluralHumanName %>') ?></h3>
     </div>
     <?php if (!empty($<%= $singularVar %>-><%= $details['property'] %>)): ?>
+  <div id="toggle<%= $i %>" class="panel-collapse collapse in">
+  <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -143,22 +148,29 @@ $otherPluralHumanName = Inflector::humanize($details['controller']);
             </thead>
             <tbody>
             <?php foreach ($<%= $singularVar %>-><%= $details['property'] %> as $<%= $otherSingularVar %>): ?>
-                <tr>
+                <tr class="tableclick">
 <% foreach ($details['fields'] as $field): %>
                     <td><?= h($<%= $otherSingularVar %>-><%= $field %>) ?></td>
 <% endforeach; %>
 <% $otherPk = "\${$otherSingularVar}->{$details['primaryKey'][0]}"; %>
                     <td class="actions">
-                        <?= $this->Html->link('', ['controller' => '<%= $details['controller'] %>', 'action' => 'view', <%= $otherPk %>], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                        <?= $this->Html->link('', ['controller' => '<%= $details['controller'] %>', 'action' => 'edit', <%= $otherPk %>], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
+                        <?= $this->Html->link('', ['controller' => '<%= $details['controller'] %>', 'action' => 'view', <%= $otherPk %>], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open doaction']) ?>
+                        <?= $this->Html->link('', ['controller' => '<%= $details['controller'] %>', 'action' => 'edit', <%= $otherPk %>], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil doaction']) ?>
                         <?= $this->Form->postLink('', ['controller' => '<%= $details['controller'] %>', 'action' => 'delete', <%= $otherPk %>], ['confirm' => __('Are you sure you want to delete # {0}?', <%= $otherPk %>), 'title' => __('Delete'), 'class' => 'btn btn-default glyphicon glyphicon-trash']) ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
         </table>
+        </div>
+        </div>
     <?php else: ?>
-        <p class="panel-body">no related <%= $otherPluralHumanName %></p>
+        <div id="toggle<%= $i %>" class="panel-collapse collapse out">
+        <p class="panel-body"><?= __('No related <%= $otherPluralHumanName %>') ?></p>
+        </div>
     <?php endif; ?>
 </div>
-<% endforeach; %>
+<% 
+$i++;
+endforeach; 
+%>

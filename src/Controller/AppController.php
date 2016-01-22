@@ -49,9 +49,18 @@ class AppController extends Controller
         $this->loadComponent('Security');
         // this is for handling dynamic db settings
         $this->loadComponent('DynamicConfig');
+        // Acl component to check permissions
+        $this->loadComponent('Acl');
 
         // Authentication
         $this->loadComponent('Auth', [
+            'authorize' => ['Controller'],
+            'flash' => [
+                'params' => [
+                    'class' => 'alert alert-danger',
+                    'role' => 'alert',
+                ],
+            ],
             'loginRedirect' => [
                 'controller' => 'Static',
                 'action' => 'about',
@@ -85,4 +94,16 @@ class AppController extends Controller
     {
 
     }
+
+    public function isAuthorized($user)
+    {
+        // allow admin users
+        if (isset($user['admin']) && $user['admin'] == 1) {
+            return true;
+        }
+
+        // Default deny
+        return false;
+    }
+
 }

@@ -32,7 +32,7 @@ class RolesController extends AppController
     public function view($id = null)
     {
         $role = $this->Roles->get($id, [
-            'contain' => ['Users']
+            'contain' => ['Users'],
         ]);
         $this->set('role', $role);
         $this->set('_serialize', ['role']);
@@ -47,6 +47,15 @@ class RolesController extends AppController
     {
         $role = $this->Roles->newEntity();
         if ($this->request->is('post')) {
+
+            // save the permissions as json in the database
+            // the cakephp Csrf component should take care of false inputs
+            // but maybe check with the content of Configure::read('Permissions')
+            if (!empty($this->request->data['permission'])) {
+                $this->request->data['permissions'] = json_encode($this->request->data['permission']);
+                unset($this->request->data['permission']);
+            }
+
             $role = $this->Roles->patchEntity($role, $this->request->data);
             if ($this->Roles->save($role)) {
                 $this->Flash->success(__('The role has been saved.'));
@@ -69,9 +78,22 @@ class RolesController extends AppController
     public function edit($id = null)
     {
         $role = $this->Roles->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
+
+        // load the as json saved permission string and convert to object
+        if (!empty($role['permissions'])) {
+            $role['permissions'] = json_decode($role['permissions']);
+        }
+
         if ($this->request->is(['patch', 'post', 'put'])) {
+
+            // save the permissions as json in the database
+            if (!empty($this->request->data['permission'])) {
+                $this->request->data['permissions'] = json_encode($this->request->data['permission']);
+                unset($this->request->data['permission']);
+            }
+
             $role = $this->Roles->patchEntity($role, $this->request->data);
             if ($this->Roles->save($role)) {
                 $this->Flash->success(__('The role has been saved.'));

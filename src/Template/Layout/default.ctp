@@ -21,6 +21,8 @@ if (!$this->fetch('tb_flash')) {
         echo $this->Flash->render();
     $this->end();
 }
+    echo $this->Flash->render('auth');
+
 if (!$this->fetch('tb_body_end')) {
     $this->start('tb_body_end');
     echo '</body>';
@@ -37,7 +39,7 @@ if (!$this->fetch('tb_body_end')) {
         <?= $this->fetch('title') . ' | ' . Configure::read('Branding.longname') ?>
     </title>
     <!--[if IE]><link rel="shortcut icon" href="img/favicon.ico"><![endif]-->
-    <link rel="icon" href="img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
 
     <?= $this->Html->css('bootstrap.min') ?>
     <?= $this->Html->css('bootstrap-theme.min') ?>

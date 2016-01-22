@@ -2,11 +2,9 @@
 $this->extend('../Layout/TwitterBootstrap/dashboard');
 $this->start('tb_actions');
 ?>
-    <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-    <li><?= $this->Html->link(__('List Roles'), ['controller' => 'Roles', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Role'), ['controller' => 'Roles', 'action' => 'add']) ?> </li>
+    <li><?= $this->Html->link('<span class="glyphicon glyphicon-list"></span> ' . __('Overview'), ['action' => 'index'], ['class' => '', 'escape' => false]) ?></li>
 <?php $this->end(); ?>
-<?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
+<?php $this->assign('tb_sidebar', $this->fetch('tb_actions')); ?>
 <?= $this->Form->create($user); ?>
 <fieldset>
     <legend><?= __('Add {0}', ['User']) ?></legend>
@@ -17,6 +15,7 @@ $this->start('tb_actions');
     echo $this->Form->input('mail');
     echo $this->Form->input('password');
     echo $this->Form->input('role_id', ['options' => $roles]);
+    echo $this->Form->input('admin');
     echo $this->Form->input('level');
     ?>
 </fieldset>

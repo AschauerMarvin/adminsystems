@@ -11,11 +11,12 @@ $this->start('tb_actions');
 <?php $this->end(); ?>
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
+<?= '<h1>' . __('View User') . '</h1>' ?>
 <div class="panel panel-default">
-    <!-- Panel header -->
-    <div class="panel-heading">
+    <div data-toggle="collapse" data-target="#toggle1" class="panel-heading">
         <h3 class="panel-title"><?= h($user->username) ?></h3>
-    </div>
+  </div>
+  <div id="toggle1" class="panel-collapse collapse in">
     <table class="table table-striped" cellpadding="0" cellspacing="0">
         <tr>
             <td><?= __('Username') ?></td>
@@ -57,6 +58,11 @@ $this->start('tb_actions');
             <td><?= __('Modified') ?></td>
             <td><?= h($user->modified) ?></td>
         </tr>
+        <tr>
+            <td><?= __('Admin') ?></td>
+            <td><?= $user->admin ? __('Yes') : __('No'); ?></td>
+        </tr>
     </table>
+    </div>
 </div>
 

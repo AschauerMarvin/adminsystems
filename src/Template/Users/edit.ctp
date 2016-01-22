@@ -3,18 +3,16 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 $this->start('tb_actions');
 ?>
     <li><?=
-    $this->Form->postLink(
+    $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ' .
         __('Delete'),
         ['action' => 'delete', $user->id],
-        ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]
+        ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'escape' => false, 'class' => 'red']
     )
     ?>
     </li>
-    <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-    <li><?= $this->Html->link(__('List Roles'), ['controller' => 'Roles', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Role'), ['controller' => 'Roles', 'action' => 'add']) ?> </li>
+    <li><?= $this->Html->link('<span class="glyphicon glyphicon-list"></span> ' . __('Overview'), ['action' => 'index'], ['class' => '', 'escape' => false]) ?></li>
 <?php $this->end(); ?>
-<?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
+<?php $this->assign('tb_sidebar', $this->fetch('tb_actions')); ?>
 <?= $this->Form->create($user); ?>
 <fieldset>
     <legend><?= __('Edit {0}', ['User']) ?></legend>
@@ -23,8 +21,9 @@ $this->start('tb_actions');
     echo $this->Form->input('firstname');
     echo $this->Form->input('lastname');
     echo $this->Form->input('mail');
-    echo $this->Form->input('password');
+    echo $this->Form->input('password', ['value' => '']);
     echo $this->Form->input('role_id', ['options' => $roles]);
+    echo $this->Form->input('admin');
     echo $this->Form->input('level');
     ?>
 </fieldset>

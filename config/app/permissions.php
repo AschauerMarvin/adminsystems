@@ -2,57 +2,57 @@
 return [
     'Permissions' => [
         'Menus' => [
-            'View',
+            'Index',
             'Add',
             'Edit',
             'Delete',
         ],
         'Articles' => [
-            'View',
+            'Index',
             'Add',
             'Edit',
             'Delete',
         ],
         'Pages' => [
-            'View',
+            'Index',
             'Add',
             'Edit',
             'Delete',
         ],
         'Elements' => [
-            'View',
+            'Index',
             'Add',
             'Edit',
             'Delete',
         ],
         'Settings' => [
-            'View',
+            'Index',
             'Add',
             'Edit',
             'Delete',
         ],
-        'Users' => [
-            'View',
-            'Add',
-            'Edit',
-            'Delete',
-        ],
+        // 'Users' => [
+        //     'Index',
+        //     'Add',
+        //     'Edit',
+        //     'Delete',
+        // ],
         'Roles' => [
-            'View',
+            'Index',
             'Add',
             'Edit',
             'Delete',
         ],
         'Domains' => [
-            'View',
+            'Index',
             'Add',
             'Edit',
             'Delete',
         ],
-        'Administrator' =>
-        [
-            'IsAdmin',
-        ],
+        // 'Administrator' =>
+        // [
+        //     'IsAdmin',
+        // ],
     ],
 ]
 ?>

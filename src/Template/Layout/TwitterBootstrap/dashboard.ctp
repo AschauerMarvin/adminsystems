@@ -13,7 +13,7 @@ $this->start('tb_body_start');
 <div id="wrapper">
     <div id="sidebar-wrapper" class="sidebar">
 <ul class="nav nav-pills nav-stacked">
-        <?= $this->fetch('tb_sidebar') ?>
+        <?= $this->fetch('tb_actions') ?>
 </ul>
 
     </div>

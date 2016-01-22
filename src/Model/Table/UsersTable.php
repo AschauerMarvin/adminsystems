@@ -2,6 +2,7 @@
 namespace App\Model\Table;
 
 use App\Model\Entity\User;
+use Cake\Event\Event;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -32,6 +33,7 @@ class UsersTable extends Table
 
         $this->belongsTo('Roles', [
             'foreignKey' => 'role_id',
+            'joinType' => 'INNER',
         ]);
     }
 
@@ -48,7 +50,8 @@ class UsersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('username');
+            ->requirePresence('username', 'create')
+            ->notEmpty('username');
 
         $validator
             ->requirePresence('firstname', 'create')
@@ -63,7 +66,17 @@ class UsersTable extends Table
             ->notEmpty('mail');
 
         $validator
-            ->allowEmpty('password');
+            ->requirePresence('password', 'create')
+            ->notEmpty('password', 'create')
+            ->allowEmpty('password', 'update');
+
+        $validator
+            ->add('admin', 'valid', ['rule' => 'boolean'])
+            ->allowEmpty('admin');
+
+        $validator
+            ->add('level', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('level');
 
         return $validator;
     }
@@ -81,4 +94,12 @@ class UsersTable extends Table
         $rules->add($rules->existsIn(['role_id'], 'Roles'));
         return $rules;
     }
+
+    public function beforeMarshal(Event $event, \ArrayObject $data, \ArrayObject $options)
+    {
+        if (isset($data['password']) && empty($data['password'])) {
+            unset($data['password']);
+        }
+    }
+
 }

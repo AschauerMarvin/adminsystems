@@ -22,7 +22,7 @@ foreach ($associations as $type => $data):
 endforeach;
 %>
 <?php $this->end(); ?>
-<?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
+<?php $this->assign('tb_sidebar', $this->fetch('tb_actions')); ?>
 
 <%
 $fields = collection($fields)
@@ -34,6 +34,7 @@ $fields = collection($fields)
 echo '<h1>' . $pluralHumanName . '</h1>';
 %>
 <input id="filter" type="text" placeholder="<?= __('Search') ?>" />
+<div class="table-responsive">
 <table id="tablefilter" class="table table-striped" cellpadding="0" cellspacing="0" data-filter="#filter" data-filter-text-only="true">
     <thead>
         <tr>
@@ -87,6 +88,7 @@ echo '<h1>' . $pluralHumanName . '</h1>';
         <?php endforeach; ?>
     </tbody>
 </table>
+</div>
 <div class="paginator">
     <ul class="pagination">
         <?= $this->Paginator->prev('< ' . __('previous')) ?>

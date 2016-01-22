@@ -2,18 +2,15 @@
 $this->extend('../Layout/TwitterBootstrap/dashboard');
 $this->start('tb_actions');
 ?>
-    <li><?= $this->Html->link(__('New User'), ['action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List Roles'), ['controller' => 'Roles', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Role'), ['controller' => ' Roles', 'action' => 'add']); ?></li>
+    <li><?= $this->Html->link('<span class="glyphicon glyphicon-plus"></span> ' . __('New User'), ['action' => 'add'], ['class' => 'green', 'escape' => false]) ?></li>
 <?php $this->end(); ?>
-<?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
+<?php $this->assign('tb_sidebar', $this->fetch('tb_actions')); ?>
 
 <h1>Users</h1><input id="filter" type="text" placeholder="<?= __('Search') ?>" />
+<div class="table-responsive">
 <table id="tablefilter" class="table table-striped" cellpadding="0" cellspacing="0" data-filter="#filter" data-filter-text-only="true">
     <thead>
         <tr>
-            <th><?= $this->Paginator->sort('id'); ?></th>
-
             <th><?= $this->Paginator->sort('username'); ?></th>
 
             <th><?= $this->Paginator->sort('firstname'); ?></th>
@@ -22,9 +19,11 @@ $this->start('tb_actions');
 
             <th><?= $this->Paginator->sort('mail'); ?></th>
 
-            <th><?= $this->Paginator->sort('password'); ?></th>
-
             <th><?= $this->Paginator->sort('role_id'); ?></th>
+
+            <th><?= $this->Paginator->sort('admin'); ?></th>
+
+            <th><?= $this->Paginator->sort('level'); ?></th>
 
             <th class="actions"><?= __('Actions'); ?></th>
         </tr>
@@ -32,17 +31,16 @@ $this->start('tb_actions');
     <tbody>
         <?php foreach ($users as $user): ?>
         <tr class="tableclick">
-            <td><?= $this->Number->format($user->id) ?></td>
             <td><?= h($user->username) ?></td>
             <td><?= h($user->firstname) ?></td>
             <td><?= h($user->lastname) ?></td>
             <td><?= h($user->mail) ?></td>
-            <td><?= h($user->password) ?></td>
             <td>
                 <?= $user->has('role') ? $this->Html->link($user->role->name, ['controller' => 'Roles', 'action' => 'view', $user->role->id]) : '' ?>
             </td>
+            <td><?= $this->Common->boolean($user->admin) ?></td>
+            <td><?= $this->Number->format($user->level) ?></td>
             <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', $user->id], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open doaction', 'id' => 'view/' . $user->id]) ?>
                 <?= $this->Html->link('', ['action' => 'edit', $user->id], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil doaction', 'id' => 'edit/' . $user->id]) ?>
                 <?= $this->Form->postLink('', ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'title' => __('Delete'), 'class' => 'btn btn-default glyphicon glyphicon-trash']) ?>
             </td>
@@ -50,6 +48,7 @@ $this->start('tb_actions');
         <?php endforeach; ?>
     </tbody>
 </table>
+</div>
 <div class="paginator">
     <ul class="pagination">
         <?= $this->Paginator->prev('< ' . __('previous')) ?>

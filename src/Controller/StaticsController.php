@@ -28,6 +28,11 @@ use Cake\View\Exception\MissingTemplateException;
 class StaticsController extends AppController
 {
 
+    public function isAuthorized($user)
+    {
+        return true;
+    }
+
     /**
      * Displays a view
      *
