@@ -8,12 +8,12 @@ $(function() {
             val = 0;
         }
 
-        page = $(this).find('.doaction').get(val).id;
+        page = $(this).find('.doaction').get(val).href;
         if (!page && val == 1) {
-            page = $(this).find('.doaction').get(0).id;
+            page = $(this).find('.doaction').get(0).href;
         }
         if (page) {
-            window.location.href = window.location.pathname + '/' + page;
+            window.location.href = page;
         }
         //alert($(this).find('.doaction').html());
         //alert($(this).html);
