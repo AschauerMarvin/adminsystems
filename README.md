@@ -1,5 +1,5 @@
-# adminsystems
-Adminsystems CMS, based on PHP
+# Adminsystems CMS
+The branding-free CMS for Developers
 
 Version 5 Development has started.
 
