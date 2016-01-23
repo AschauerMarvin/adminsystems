@@ -20,7 +20,7 @@ use Cake\Core\Configure;
           <ul class="nav navbar-nav">
 <li>
 <?php
-if (true) {
+if ($this->Acl->Menus('index')) {
     echo $this->Html->link('Menus', ['controller' => 'Articles', 'action' => 'index', '_full' => true]);
 }
 ?>
@@ -28,7 +28,7 @@ if (true) {
 <li>
 <?php
 // Articles
-if (true) {
+if ($this->Acl->Articles('index')) {
     echo $this->Html->link('Articles', ['controller' => 'Menus', 'action' => 'index', '_full' => true]);
 }
 ?>
@@ -36,7 +36,7 @@ if (true) {
 <li>
 <?php
 // Pages
-if (true) {
+if ($this->Acl->Pages('index')) {
     echo $this->Html->link('Pages', ['controller' => 'Pages', 'action' => 'index', '_full' => true]);
 }
 ?>
@@ -44,7 +44,7 @@ if (true) {
 <li>
 <?php
 // Elements
-if (true) {
+if ($this->Acl->Elements('index')) {
     echo $this->Html->link('Elements', ['controller' => 'Elements', 'action' => 'index', '_full' => true]);
 }
 ?>
@@ -52,19 +52,17 @@ if (true) {
 
 <?php
 // settings dropdown
-if(true):
+if($this->Acl->Settings() || $this->Acl->Users() || $this->Acl->Roles() || $this->Acl->Domains() || $this->Acl->Languages()):
 ?>
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= __('Settings') ?> <span class="caret"></span></a>
 <ul class="dropdown-menu">
 <?php
-if (true) {
-    echo '<li>' . $this->Html->link('Settings', ['controller' => 'Settings', 'action' => 'index', '_full' => true]) . '</li>';
-    echo '<li>' . $this->Html->link('Users', ['controller' => 'Users', 'action' => 'index', '_full' => true]) . '</li>';
-    echo '<li>' . $this->Html->link('Roles', ['controller' => 'Roles', 'action' => 'index', '_full' => true]) . '</li>';
-    echo '<li>' . $this->Html->link('Domains', ['controller' => 'Domains', 'action' => 'index', '_full' => true]) . '</li>';
-    echo '<li>' . $this->Html->link('Languages', ['controller' => 'Languages', 'action' => 'index', '_full' => true]) . '</li>';
-}
+    if($this->Acl->Settings()) echo '<li>' . $this->Html->link('Settings', ['controller' => 'Settings', 'action' => 'index', '_full' => true]) . '</li>';
+    if($this->Acl->Users()) echo '<li>' . $this->Html->link('Users', ['controller' => 'Users', 'action' => 'index', '_full' => true]) . '</li>';
+    if($this->Acl->Roles()) echo '<li>' . $this->Html->link('Roles', ['controller' => 'Roles', 'action' => 'index', '_full' => true]) . '</li>';
+    if($this->Acl->Domains()) echo '<li>' . $this->Html->link('Domains', ['controller' => 'Domains', 'action' => 'index', '_full' => true]) . '</li>';
+    if($this->Acl->Languages()) echo '<li>' . $this->Html->link('Languages', ['controller' => 'Languages', 'action' => 'index', '_full' => true]) . '</li>';
 ?>
 </ul>
 </li>
@@ -72,10 +70,6 @@ if (true) {
 endif;
 ?>
 
-<?php
-// user dropdown
-if(true):
-?>
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= __('System') ?> <span class="caret"></span></a>
 <ul class="dropdown-menu">
@@ -89,23 +83,21 @@ if (true) {
 ?>
 </ul>
 </li>
-<?php 
-endif;
-?>
 
           </ul>
-          <ul class="nav navbar-nav navbar-right">
+
+<?php if(true): ?>
+<ul class="nav navbar-nav navbar-right">
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= __('Systeme') ?> <span class="caret"></span></a>
 <ul class="dropdown-menu">
 <?php
-if (true) {
-    echo '<li>' . $this->Html->link('System 1', ['controller' => 'Domains', 'action' => 'switch/system1', '_full' => true]) . '</li>';
-    echo '<li>' . $this->Html->link('System 2', ['controller' => 'Domains', 'action' => 'switch/system1', '_full' => true]) . '</li>';
-    echo '<li>' . $this->Html->link('System 3', ['controller' => 'Domains', 'action' => 'switch/system1', '_full' => true]) . '</li>';
-}
+    if(true) echo '<li>' . $this->Html->link('System 1', ['controller' => 'Domains', 'action' => 'switch/system1', '_full' => true]) . '</li>';
+    if(true) echo '<li>' . $this->Html->link('System 2', ['controller' => 'Domains', 'action' => 'switch/system1', '_full' => true]) . '</li>';
+    if(true) echo '<li>' . $this->Html->link('System 3', ['controller' => 'Domains', 'action' => 'switch/system1', '_full' => true]) . '</li>';
 ?>
 </ul>
+<?php endif; ?>
 </li>
 
           </ul>

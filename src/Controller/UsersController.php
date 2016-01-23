@@ -99,7 +99,7 @@ class UsersController extends AppController
      * Delete method
      *
      * @param string|null $id User id.
-     * @return \Cake\Network\Response|null Redirects to index.
+     * @return \Cake\Network\Response|null Redirects to home.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function delete($id = null)
@@ -120,6 +120,20 @@ class UsersController extends AppController
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
+
+                // on correct login, get the role informations
+                if (!empty($user['role_id'])) {
+                    $this->loadModel('Roles');
+                    $role = $this->Roles->get($user['role_id']);
+                    $role = $role->toArray();
+                    // save the permission informations into an array
+                    if (!empty($role['permissions'])) {
+                        $role['permissions'] = json_decode($role['permissions'], true);
+                    }
+                    // save the role informations into the session
+                    $this->request->session()->write('Auth.Role', $role);
+                }
+
                 return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Flash->error(__('Invalid username or password, try again'));
