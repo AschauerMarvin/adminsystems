@@ -15,6 +15,7 @@
 namespace App\Controller;
 
 use Cake\Core\Configure;
+use Cake\Event\Event;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 
@@ -31,6 +32,11 @@ class StaticsController extends AppController
     public function isAuthorized($user)
     {
         return true;
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
     }
 
     /**

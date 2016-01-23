@@ -63,7 +63,7 @@ class AppController extends Controller
             ],
             'loginRedirect' => [
                 'controller' => 'Static',
-                'action' => 'about',
+                'action' => 'home',
             ],
             'logoutRedirect' => [
                 'controller' => 'Login',
@@ -92,7 +92,10 @@ class AppController extends Controller
 
     public function beforeFilter(Event $event)
     {
-
+        // surpress "not authenticated" messeges on the login screen
+        if (!$this->Auth->user()) {
+            $this->Auth->config('authError', false);
+        }
     }
 
     public function isAuthorized($user)
